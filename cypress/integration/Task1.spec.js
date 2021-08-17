@@ -4,12 +4,12 @@ var password = ""; // amParolaCea1MaiTare
 var email = ""; //canomeI105@email.com
 
 // // #################################
-describe("Test register in new customer account ", () => {
+describe("Test register in new customer account functionality ", () => {
   beforeEach(() => {
     cy.visit("http://live.demoguru99.com");
   });
 
-  it("Test register functionality", () => {
+  it("Test register new user", () => {
     cy.get("#header > div > div.skip-links > div > a")
       .should("have.class", "skip-link skip-account")
       .click();
@@ -50,7 +50,7 @@ describe("Test login functionality ", () => {
   beforeEach(() => {
     cy.visit("http://live.demoguru99.com");
   });
-  it("Test Login functionality", () => {
+  it("Test Login an existing user", () => {
     cy.get("#header > div > div.skip-links > div > a")
       .should("have.class", "skip-link skip-account")
       .click();
@@ -123,7 +123,7 @@ describe("Validation tests for registering new customer account ", () => {
     const randomNum2 =
       Math.floor(Math.random() * 4) + Math.floor(Math.random() * 5) + 3;
     password = "amParolaCea1MaiTare" + randomNum2 + randomNum1;
-    email = `valid${randomNum1}${randomNum2}.email.com`;
+    email = `invalid${randomNum1}${randomNum2}.email.com`;
 
     cy.get("#firstname").should("have.id", "firstname").type("Canome");
     cy.get("#middlename").should("have.id", "middlename").type("R");
@@ -159,7 +159,7 @@ describe("Validation tests for registering new customer account ", () => {
     const randomNum2 =
       Math.floor(Math.random() * 4) + Math.floor(Math.random() * 5) + 3;
     password = "amParolaCea1MaiTare" + randomNum2 + randomNum1;
-    email = `valid${randomNum1}${randomNum2}@emailcom`;
+    email = `invalid${randomNum1}${randomNum2}@emailcom`;
 
     cy.get("#firstname").should("have.id", "firstname").type("Canome");
     cy.get("#middlename").should("have.id", "middlename").type("R");
@@ -181,7 +181,7 @@ describe("Validation tests for registering new customer account ", () => {
     cy.get("#header-account > div > ul > li.last > a").click();
   });
 
-  it("Test register invalid Email without  the domain name location", () => {
+  it("Test register invalid Email without the domain name location", () => {
     cy.get("#header > div > div.skip-links > div > a")
       .should("have.class", "skip-link skip-account")
       .click();
@@ -195,7 +195,7 @@ describe("Validation tests for registering new customer account ", () => {
     const randomNum2 =
       Math.floor(Math.random() * 4) + Math.floor(Math.random() * 5) + 3;
     password = "amParolaCea1MaiTare" + randomNum2 + randomNum1;
-    email = `valid${randomNum1}${randomNum2}@email`;
+    email = `invalid${randomNum1}${randomNum2}@email`;
 
     cy.get("#firstname").should("have.id", "firstname").type("Canome");
     cy.get("#middlename").should("have.id", "middlename").type("R");
@@ -386,7 +386,7 @@ describe("Validation tests for customer login functionality ", () => {
       .click();
     cy.get("#header-account > div > ul > li.last > a").click();
   });
-  it("Login whit wrong email whithouth @ sign", () => {
+  it("Login whit wrong EMAIL whithouth @ sign", () => {
     cy.get("#header > div > div.skip-links > div > a")
       .should("have.class", "skip-link skip-account")
       .click();
