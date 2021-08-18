@@ -226,7 +226,7 @@ describe("Test register in new customer account functionality ", () => {
     cy.get("#email_address").should("have.value", email);
     cy.get("#form-validate > div.buttons-set > button")
       .should("have.class", "button")
-      .click(); //need to be comm/uncomment
+      .click();
     cy.get("#header > div > div.skip-links > div > a")
       .should("have.class", "skip-link skip-account")
       .click();
@@ -305,7 +305,7 @@ describe("Test register in new customer account functionality ", () => {
 
     cy.get("#form-validate > div.buttons-set > button")
       .should("have.class", "button")
-      .click(); //need to be comm/uncomment
+      .click();
 
     cy.get("#header > div > div.skip-links > div > a")
       .should("have.class", "skip-link skip-account")
