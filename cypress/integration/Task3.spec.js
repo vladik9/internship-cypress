@@ -175,55 +175,101 @@ describe("Test funtionality for registred user", () => {
       .should("have.value", password);
     cy.get("#send2").should("contain", "Login").click();
 
-    cy.get("#search").click().clear().type("IPHONE 6");
+    cy.get(".nav-1 > .level0").should("have.class", "level0").click();
+    cy.get("#search").clear().type("Samsung Galaxy");
     cy.get("#search_autocomplete > ul").first().click();
-    cy.get(".link-wishlist").last().click();
+    cy.get(":nth-child(2) > .product-info > .actions > .button").click();
     cy.get("li > span").should(
       "have.text",
-      "IPhone has been added to your wishlist. Click here to continue shopping."
+      "Samsung Galaxy was added to your shopping cart."
     );
 
-    cy.get("#search").click().clear().type("SONY XPERIA");
+    cy.get("#search").click().clear().type("Iphone 6");
     cy.get("#search_autocomplete > ul").first().click();
-    cy.get("#product-collection-image-1").click();
-    cy.get(".link-wishlist").click();
+    cy.get(":nth-child(2) > .product-info > .actions > .button").click();
     cy.get("li > span").should(
       "have.text",
-      "Sony Xperia has been added to your wishlist. Click here to continue shopping."
-    );
-
-    cy.get("#search").click().clear().type("Samsung Galaxy");
-    cy.get("#search_autocomplete > ul").first().click();
-    cy.get("#product-collection-image-3").click();
-    cy.get(".link-wishlist").click();
-    cy.get("li > span").should(
-      "have.text",
-      "Samsung Galaxy has been added to your wishlist. Click here to continue shopping."
+      "IPhone was added to your shopping cart."
     );
     cy.get("#search").click().clear().type("LG LCD");
     cy.get("#search_autocomplete > ul").first().click();
-    cy.get("#product-collection-image-5").click();
-    cy.get(".link-wishlist").click();
+    cy.get(":nth-child(2) > .product-info > .actions > .button").click();
     cy.get("li > span").should(
       "have.text",
-      "Samsung LCD has been added to your wishlist. Click here to continue shopping."
+      "LG LCD was added to your shopping cart."
     );
-    cy.get("a").contains("Remove item").first().click();
-
-    cy.get("td.wishlist-cell4.customer-wishlist-item-cart > p > a")
-      .contains("Edit")
-      .eq(0)
+    cy.get("#search").click().clear().type("Samsung LCD");
+    cy.get("#search_autocomplete > ul").first().click();
+    cy.get(
+      ":nth-child(1) > .product-info > .actions > .button > :nth-child(1) > span"
+    ).click();
+    cy.get("li > span").should(
+      "have.text",
+      "Samsung LCD was added to your shopping cart."
+    );
+    cy.get(
+      "#shopping-cart-table > tbody > tr.last.even > td.a-center.product-cart-remove.last > a"
+    )
+      .contains("Remove Item")
       .click();
-    cy.get("#qty").clear().type("4").should("have.value", "4");
-    cy.get("a").contains("Update Wishlist").click();
-    cy.get("button").contains("Update Wishlist").first().click();
+    cy.get(".first > .product-cart-actions > .input-text")
+      .click()
+      .clear()
+      .type("10");
+    cy.get(".first > .product-cart-actions > .button > :nth-child(1) > span")
+      .contains("Update")
+      .click();
+    cy.get("span").contains("Proceed to Checkout").click();
+    cy.get("#billing-buttons-container > .button").click();
+    cy.get("#shipping-method-buttons-container > .button").click();
+    cy.get("#p_method_checkmo").check().should("be.checked");
+    cy.get("#payment-buttons-container > .button").click();
+    cy.get("#review-buttons-container > .button").click();
 
+    cy.get(".large").click();
+    cy.get("#header > div > div.skip-links > div > a")
+      .should("have.class", "skip-link skip-account")
+      .click();
+    cy.get("#header-account > .links > ul > .first > a")
+      .should("contain", "My Account")
+      .click();
     cy.get("a").contains("Address Book").click();
-    cy.get("h3").last().should("have.text", "Default Shipping Address");
+    cy.get("h3")
+      .contains("Default Shipping Address")
+      .should("have.text", "Default Shipping Address");
 
     cy.get("#header > div > div.skip-links > div > a")
       .should("have.class", "skip-link skip-account")
       .click();
+    cy.get("#header-account > div > ul > li.last > a").click();
+  });
+
+  it("Test to check order status", () => {
+    cy.get("#header > div > div.skip-links > div > a")
+      .should("have.class", "skip-link skip-account")
+      .click();
+    cy.get("#header-account > div > ul > li.last > a")
+      .should("contain", "Log In")
+      .click();
+    cy.get("#email")
+      .should("have.id", "email")
+      .type(email)
+      .should("have.value", email);
+    cy.get("#pass")
+      .should("have.class", "input-text required-entry validate-password")
+      .type(password)
+      .should("have.value", password);
+    cy.get("#send2").should("contain", "Login").click();
+    cy.get("a").contains("View Order").first().click();
+    cy.get("#order-info-tabs > .current").should(
+      "have.text",
+      "Order Information"
+    );
+
+    cy.get("#header > div > div.skip-links > div > a")
+      .should("have.class", "skip-link skip-account")
+      .click();
+
     cy.get("#header-account > div > ul > li.last > a").click();
   });
 });
