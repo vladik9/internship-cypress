@@ -50,12 +50,7 @@ describe("Test register in new customer account functionality ", () => {
     );
     cy.get("#header-account > div > ul > li.last > a").click();
   });
-});
 
-describe("Test login functionality ", () => {
-  beforeEach(() => {
-    cy.visit("http://live.demoguru99.com");
-  });
   it("Test Login an existing user", () => {
     cy.get("#header > div > div.skip-links > div > a")
       .should("have.class", "skip-link skip-account")
@@ -76,12 +71,6 @@ describe("Test login functionality ", () => {
       .should("have.class", "skip-link skip-account")
       .click();
     cy.get("#header-account > div > ul > li.last > a").click();
-  });
-});
-
-describe("Validation tests for registering new customer account ", () => {
-  beforeEach(() => {
-    cy.visit("http://live.demoguru99.com");
   });
   it("Test register valid Email", () => {
     genMeEmailcode();
@@ -116,7 +105,6 @@ describe("Validation tests for registering new customer account ", () => {
       .click();
     cy.get("#header-account > div > ul > li.last > a").click();
   });
-
   it("Test register invalid Email without the @ sign", () => {
     genMeEmailcode();
     cy.get("#header > div > div.skip-links > div > a")
@@ -149,7 +137,6 @@ describe("Validation tests for registering new customer account ", () => {
       .click();
     cy.get("#header-account > div > ul > li.last > a").click();
   });
-
   it("Test register invalid Email without dot in the domain name", () => {
     genMeEmailcode();
     cy.get("#header > div > div.skip-links > div > a")
@@ -182,7 +169,6 @@ describe("Validation tests for registering new customer account ", () => {
       .click();
     cy.get("#header-account > div > ul > li.last > a").click();
   });
-
   it("Test register invalid Email without the domain name location", () => {
     genMeEmailcode();
     cy.get("#header > div > div.skip-links > div > a")
@@ -362,12 +348,6 @@ describe("Validation tests for registering new customer account ", () => {
       .click();
     cy.get("#header-account > div > ul > li.last > a").click();
   });
-});
-describe("Validation tests for customer login functionality ", () => {
-  beforeEach(() => {
-    cy.visit("http://live.demoguru99.com");
-  });
-
   it("Login whit wrong password", () => {
     cy.get("#header > div > div.skip-links > div > a")
       .should("have.class", "skip-link skip-account")
@@ -386,7 +366,6 @@ describe("Validation tests for customer login functionality ", () => {
       .click();
     cy.get("#header-account > div > ul > li.last > a").click();
   });
-
   it("Login whit wrong EMAIL whithouth @ sign", () => {
     cy.get("#header > div > div.skip-links > div > a")
       .should("have.class", "skip-link skip-account")
