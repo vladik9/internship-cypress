@@ -9,6 +9,7 @@ describe("Test REST api", () => {
       const name = response.body[0].name;
       expect(response.status).to.eq(200);
       alert(`The name was: ${name}`);
+      console.log(response.body);
     });
   });
 
@@ -27,9 +28,9 @@ describe("Test REST api", () => {
       "https://petstore.swagger.io/v2/store/order",
       jsBody
     ).then((response) => {
-      console.log(response.body);
       if (response.body.status === "placed") alert("The order is placed!");
       expect(response.status).to.eq(200);
+      console.log(response.body);
     });
   });
 
@@ -40,6 +41,7 @@ describe("Test REST api", () => {
     cy.request("GET", url).then((response) => {
       if (response.status === 200) alert("The user has successfully login!");
       expect(response.status).to.eq(200);
+      console.log(response.body);
     });
   });
 });
