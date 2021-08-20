@@ -13,7 +13,7 @@ const genMeEmailcode = function () {
 };
 
 // for registering
-class UtilsFuncitons {
+class UtilsFunctions {
   getAccountButton() {
     return cy.get("#header > div > div.skip-links > div > a");
   }
@@ -72,4 +72,4 @@ class UtilsFuncitons {
     return cy.get("h1").contains("You are now logged out");
   }
 }
-export default UtilsFuncitons;
+export default UtilsFunctions;
