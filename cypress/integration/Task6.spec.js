@@ -1,18 +1,11 @@
-var password = "amParolaCea1MaiTare";
+import Register from "../support/RegisterPOM.spec";
+const register = new Register();
+import LogIn from "../support/LogInPOM.spec";
+const logIn = new LogIn();
+import RanGen from "../support/RandomGenerator.spec";
+const ranGen = new RanGen();
 var email = "canomeI105@email.com";
-import POM from "./cypressTask6POMFile.spec.js";
-const pom = new POM();
-const genMeEmailcode = function () {
-  const randomNum1 =
-    Math.floor(Math.random() * 2) + Math.floor(Math.random() * 3) + 5;
-  const randomNum2 =
-    Math.floor(Math.random() * 7) + Math.floor(Math.random() * 2) + 4;
-  const randomNum3 =
-    Math.floor(Math.random() * 3) + Math.floor(Math.random() * 3) + 2;
-  const randomNum4 =
-    Math.floor(Math.random() * 8) + Math.floor(Math.random() * 0) + 2;
-  return (email = `ca${randomNum4}nome${randomNum3}I${randomNum1}${randomNum2}@email.com`);
-};
+var password = "amParolaCea1MaiTare";
 
 describe("POM model in Cypress", () => {
   beforeEach(() => {
@@ -20,73 +13,84 @@ describe("POM model in Cypress", () => {
   });
 
   it("Register POM model", () => {
-    genMeEmailcode();
+    email = ranGen.genMeEmailcode();
     cy.get(
-      pom
+      register
         .getAccountButton()
         .should("have.class", "skip-link skip-account")
         .click()
     );
-    cy.get(pom.getRegisterButton().should("contain", "Register").click());
-    cy.get(pom.getFirstName().should("have.id", "firstname").type("Canome"));
-
-    cy.get(pom.getMiddleName().should("have.id", "middlename").type("R"));
-
-    cy.get(pom.getLastName().should("have.id", "lastname").type("Eduard"));
-    cy.get(pom.getEmail().should("have.id", "email_address").type(email));
+    cy.get(register.getRegisterButton().should("contain", "Register").click());
     cy.get(
-      pom
+      register.getFirstName().should("have.id", "firstname").type("Canome")
+    );
+
+    cy.get(register.getMiddleName().should("have.id", "middlename").type("R"));
+
+    cy.get(register.getLastName().should("have.id", "lastname").type("Eduard"));
+    cy.get(register.getEmail().should("have.id", "email_address").type(email));
+    cy.get(
+      register
         .getPassword()
         .should("have.class", "input-text required-entry validate-password")
         .type(password)
     );
     cy.get(
-      pom.getConfirmPassword().should("have.id", "confirmation").type(password)
+      register
+        .getConfirmPassword()
+        .should("have.id", "confirmation")
+        .type(password)
     );
-    cy.get(pom.getSubscriptionNewsletter().check().should("be.checked"));
+    cy.get(register.getSubscriptionNewsletter().check().should("be.checked"));
     cy.get(
-      pom.getSumbitRegistrationButton().should("have.class", "button").click()
+      register
+        .getSumbitRegistrationButton()
+        .should("have.class", "button")
+        .click()
     );
     cy.get(
-      pom
+      register
         .getOkMessageRegistrationButton()
         .should(
           "have.text",
           "Thank you for registering with Main Website Store."
         )
     );
-    cy.get(pom.getAccountButton().click());
-    cy.get(pom.getLogOutButton().click());
+    cy.get(register.getAccountButton().click());
+    cy.get(register.getLogOutButton().click());
+    cy.get(
+      register.getLogOutMessage().should("have.text", "You are now logged out")
+    );
   });
 
   it("LogIn POM model", () => {
     cy.get(
-      pom
+      logIn
         .getAccountButton()
         .should("have.class", "skip-link skip-account")
         .click()
     );
-    cy.get(pom.getLogOutButton().should("contain", "Log In").click());
+    cy.get(logIn.getLogOutButton().should("contain", "Log In").click());
     cy.get(
-      pom
+      logIn
         .getEmaillogIn()
         .should("have.id", "email")
         .type(email)
         .should("have.value", email)
     );
     cy.get(
-      pom
-        .getEmailLogIn()
+      logIn
+        .getPasswLogIn()
         .should("have.class", "input-text required-entry validate-password")
         .type(password)
         .should("have.value", password)
     );
-    cy.get(pom.getLogInButton().should("contain", "Login").click());
-    cy.get(pom.getLogInSuccessMessage().should("have.text", "My Dashboard"));
-    cy.get(pom.getAccountButton().click());
-    cy.get(pom.getLogOutButton().click());
+    cy.get(logIn.getLogInButton().should("contain", "Login").click());
+    cy.get(logIn.getLogInSuccessMessage().should("have.text", "My Dashboard"));
+    cy.get(logIn.getAccountButton().click());
+    cy.get(logIn.getLogOutButton().click());
     cy.get(
-      pom.getLogOutMessage().should("have.text", "You are now logged out")
+      logIn.getLogOutMessage().should("have.text", "You are now logged out")
     );
   });
 });
