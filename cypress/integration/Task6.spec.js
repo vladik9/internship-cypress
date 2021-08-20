@@ -1,4 +1,4 @@
-describe("Test REST api", () => {
+describe("", () => {
   beforeEach(() => {});
 
   it("Test a GET request", () => {});
