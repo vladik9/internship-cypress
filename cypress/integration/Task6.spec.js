@@ -1,5 +1,6 @@
 var password = "amParolaCea1MaiTare";
 var email = "canomeI105@email.com";
+import POM from "./cypressTask6POMFile.spec.js";
 const pom = new POM();
 const genMeEmailcode = function () {
   const randomNum1 =
@@ -13,7 +14,6 @@ const genMeEmailcode = function () {
   return (email = `ca${randomNum4}nome${randomNum3}I${randomNum1}${randomNum2}@email.com`);
 };
 
-import POM from "./cypressTask6POMFile.spec.js";
 describe("POM model in Cypress", () => {
   beforeEach(() => {
     cy.visit("http://live.demoguru99.com");
