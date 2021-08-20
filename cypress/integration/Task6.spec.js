@@ -20,32 +20,30 @@ describe("POM model in Cypress", () => {
 
         .click()
     );
-    cy.get(register.getRegisterButton().click());
-    cy.get(register.getFirstName().type("Canome"));
-
-    cy.get(register.getMiddleName().type("R"));
-
-    cy.get(register.getLastName().type("Eduard"));
-    cy.get(register.getEmail().type(email));
-    cy.get(register.getPassword().type(password));
-    cy.get(register.getConfirmPassword().type(password));
-    cy.get(register.getSubscriptionNewsletter().check().should("be.checked"));
-    cy.get(register.getSumbitRegistrationButton().click());
-    cy.get(register.getOkMessageRegistrationButton());
-    cy.get(register.getAccountButton().click());
-    cy.get(register.getLogOutButton().click());
-    cy.get(register.getLogOutMessage());
+    register.getRegisterButton().click();
+    register.getFirstName().type("Canome");
+    register.getMiddleName().type("R");
+    register.getLastName().type("Eduard");
+    register.getEmail().type(email);
+    register.getPassword().type(password);
+    register.getConfirmPassword().type(password);
+    register.getSubscriptionNewsletter().check().should("be.checked");
+    register.getSumbitRegistrationButton().click();
+    register.getOkMessageRegistrationButton();
+    register.getAccountButton().click();
+    register.getLogOutButton().click();
+    register.getLogOutMessage();
   });
 
   it("LogIn POM model", () => {
-    cy.get(logIn.getAccountButton().click());
-    cy.get(logIn.getLogOutButton().click());
-    cy.get(logIn.getEmaillogIn().type(email).should("have.value", email));
-    cy.get(logIn.getPasswLogIn().type(password).should("have.value", password));
-    cy.get(logIn.getLogInButton().click());
-    cy.get(logIn.getLogInSuccessMessage());
-    cy.get(logIn.getAccountButton().click());
-    cy.get(logIn.getLogOutButton().click());
-    cy.get(logIn.getLogOutMessage());
+    logIn.getAccountButton().click();
+    logIn.getLogOutButton().click();
+    logIn.getEmaillogIn().type(email).should("have.value", email);
+    logIn.getPasswLogIn().type(password).should("have.value", password);
+    logIn.getLogInButton().click();
+    logIn.getLogInSuccessMessage();
+    logIn.getAccountButton().click();
+    logIn.getLogOutButton().click();
+    logIn.getLogOutMessage();
   });
 });
