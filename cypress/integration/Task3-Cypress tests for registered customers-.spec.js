@@ -1,11 +1,12 @@
-var password = "amParolaCea1MaiTare"; // amParolaCea1MaiTare
-var email = "canomeI105@email.com"; //canomeI105@email.com
+var password = "amParolaCea1MaiTare";
+var email = "canomeI105@email.com";
 
 describe("Test funtionality for registred user", () => {
   beforeEach(() => {
     cy.visit("http://live.demoguru99.com");
+    Cypress.config("defaultCommandTimeout", 10000);
   });
-  Cypress.config("defaultCommandTimeout", 10000);
+
   it("Test update an account information ", () => {
     cy.get("#header > div > div.skip-links > div > a")
       .should("have.class", "skip-link skip-account")
@@ -48,7 +49,6 @@ describe("Test funtionality for registred user", () => {
   });
 
   it("Test adding new address ", () => {
-    Cypress.config("defaultCommandTimeout", 10000);
     cy.get("#header > div > div.skip-links > div > a")
       .should("have.class", "skip-link skip-account")
       .click();
@@ -115,7 +115,6 @@ describe("Test funtionality for registred user", () => {
   });
 
   it("Test for wishlist ", () => {
-    Cypress.config("defaultCommandTimeout", 10000);
     cy.get("#header > div > div.skip-links > div > a")
       .should("have.class", "skip-link skip-account")
       .click();
@@ -161,7 +160,6 @@ describe("Test funtionality for registred user", () => {
   });
 
   it("Test to purchase items", () => {
-    Cypress.config("defaultCommandTimeout", 10000);
     cy.get("#header > div > div.skip-links > div > a")
       .should("have.class", "skip-link skip-account")
       .click();
@@ -248,7 +246,6 @@ describe("Test funtionality for registred user", () => {
   });
 
   it("Test to check order status", () => {
-    Cypress.config("defaultCommandTimeout", 10000);
     cy.get("#header > div > div.skip-links > div > a")
       .should("have.class", "skip-link skip-account")
       .click();

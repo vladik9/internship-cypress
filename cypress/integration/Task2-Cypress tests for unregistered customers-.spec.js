@@ -1,4 +1,4 @@
-let orderId = "";
+let orderId = "100014858";
 let email = "my_email@email.com";
 let lastName = "Ann";
 describe("Test funtionality for unregistred user", () => {
@@ -10,6 +10,7 @@ describe("Test funtionality for unregistred user", () => {
     cy.get(".nav-1 > .level0").should("have.class", "level0").click();
     cy.get("#search").click().type("IPHONE").clear().type("IPHONE 6");
     cy.get("h1").should("have.text", "Mobile");
+    cy.get("a").contains("IPhone").and("have.text", "IPhone");
   });
 
   it("Test add an item to shoping cart", () => {
@@ -24,6 +25,9 @@ describe("Test funtionality for unregistred user", () => {
       "have.text",
       "IPhone was added to your shopping cart."
     );
+    cy.get("input[type=text]")
+      .should("have.class", "input-text qty")
+      .and("have.value", "1");
     cy.get(".a-center > .btn-remove").click();
     cy.get("h1").should("have.text", "Shopping Cart is Empty");
   });
@@ -103,7 +107,7 @@ describe("Test funtionality for unregistred user", () => {
     });
   });
 
-  it("Test for checking the order statuse", () => {
+  it("Test for checking the order status", () => {
     cy.get("a").contains("Orders and Returns").first().click();
     cy.get("#oar_order_id").type(orderId).should("have.value", orderId);
     cy.get("#oar_billing_lastname")
@@ -112,5 +116,7 @@ describe("Test funtionality for unregistred user", () => {
     cy.get("#oar_email").type(email).should("have.value", email);
     cy.get(".buttons-set > .button").should("be.visible", true).click();
     cy.get(".current").should("have.text", "Order Information");
+    cy.get("h1").should("have.text", `Order #${orderId} - Pending`);
+    cy.get(".product-name").should("have.text", "IPhone");
   });
 });

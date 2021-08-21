@@ -27,7 +27,6 @@ describe("Test register in new customer account functionality ", () => {
     cy.get("#header-account > div > ul > li:nth-child(5) > a")
       .should("contain", "Register")
       .click();
-
     cy.get("#firstname").should("have.id", "firstname").type("Canome");
     cy.get("#middlename").should("have.id", "middlename").type("R");
     cy.get("#lastname").should("have.id", "lastname").type("Eduard");
@@ -63,7 +62,6 @@ describe("Test register in new customer account functionality ", () => {
       .should("have.class", "input-text required-entry validate-password")
       .type("amParolaCea1MaiTare");
     cy.get("#send2").should("contain", "Login").click();
-
     cy.get(
       "body > div > div > div.main-container.col2-left-layout > div > div.col-main > div > div > div.page-title > h1"
     ).should("have.text", "My Dashboard");
@@ -78,15 +76,12 @@ describe("Test register in new customer account functionality ", () => {
     cy.get("#header > div > div.skip-links > div > a")
       .should("have.class", "skip-link skip-account")
       .click();
-
     cy.get("#header-account > div > ul > li:nth-child(5) > a")
       .should("contain", "Register")
       .click();
-
     cy.get("#firstname").should("have.id", "firstname").type("Canome");
     cy.get("#middlename").should("have.id", "middlename").type("R");
     cy.get("#lastname").should("have.id", "lastname").type("Eduard");
-
     cy.get("#email_address").should("have.id", "email_address").type(email);
     cy.get("#password")
       .should("have.class", "input-text required-entry validate-password")
@@ -110,13 +105,11 @@ describe("Test register in new customer account functionality ", () => {
     cy.get("#header > div > div.skip-links > div > a")
       .should("have.class", "skip-link skip-account")
       .click();
-
     cy.get("#header-account > div > ul > li:nth-child(5) > a")
       .should("contain", "Register")
       .click();
 
     email = `invalid${genMeEmailcode()}`;
-
     cy.get("#firstname").should("have.id", "firstname").type("Canome");
     cy.get("#middlename").should("have.id", "middlename").type("R");
     cy.get("#lastname").should("have.id", "lastname").type("Eduard");
@@ -131,7 +124,6 @@ describe("Test register in new customer account functionality ", () => {
     cy.get("#form-validate > div.buttons-set > button")
       .should("have.class", "button")
       .click();
-
     cy.get("#header > div > div.skip-links > div > a")
       .should("have.class", "skip-link skip-account")
       .click();
@@ -142,17 +134,13 @@ describe("Test register in new customer account functionality ", () => {
     cy.get("#header > div > div.skip-links > div > a")
       .should("have.class", "skip-link skip-account")
       .click();
-
     cy.get("#header-account > div > ul > li:nth-child(5) > a")
       .should("contain", "Register")
       .click();
-
     email = `invalid${genMeEmailcode()}@emailcom`;
-
     cy.get("#firstname").should("have.id", "firstname").type("Canome");
     cy.get("#middlename").should("have.id", "middlename").type("R");
     cy.get("#lastname").should("have.id", "lastname").type("Eduard");
-
     cy.get("#email_address").should("have.id", "email_address").type(email);
     cy.get("#password")
       .should("have.class", "input-text required-entry validate-password")
@@ -162,8 +150,7 @@ describe("Test register in new customer account functionality ", () => {
     cy.get("#email_address").should("have.value", email);
     cy.get("#form-validate > div.buttons-set > button")
       .should("have.class", "button")
-      .click(); //need to be comm/uncomment
-
+      .click();
     cy.get("#header > div > div.skip-links > div > a")
       .should("have.class", "skip-link skip-account")
       .click();
@@ -174,17 +161,13 @@ describe("Test register in new customer account functionality ", () => {
     cy.get("#header > div > div.skip-links > div > a")
       .should("have.class", "skip-link skip-account")
       .click();
-
     cy.get("#header-account > div > ul > li:nth-child(5) > a")
       .should("contain", "Register")
       .click();
-
     email = `invalid${genMeEmailcode()}@email`;
-
     cy.get("#firstname").should("have.id", "firstname").type("Canome");
     cy.get("#middlename").should("have.id", "middlename").type("R");
     cy.get("#lastname").should("have.id", "lastname").type("Eduard");
-
     cy.get("#email_address").should("have.id", "email_address").type(email);
     cy.get("#password")
       .should("have.class", "input-text required-entry validate-password")
@@ -206,17 +189,14 @@ describe("Test register in new customer account functionality ", () => {
     cy.get("#header > div > div.skip-links > div > a")
       .should("have.class", "skip-link skip-account")
       .click();
-
     cy.get("#header-account > div > ul > li:nth-child(5) > a")
       .should("contain", "Register")
       .click();
-
     email = `@email.com`;
 
     cy.get("#firstname").should("have.id", "firstname").type("Canome");
     cy.get("#middlename").should("have.id", "middlename").type("R");
     cy.get("#lastname").should("have.id", "lastname").type("Eduard");
-
     cy.get("#email_address").should("have.id", "email_address").type(email);
     cy.get("#password")
       .should("have.class", "input-text required-entry validate-password")
@@ -238,13 +218,10 @@ describe("Test register in new customer account functionality ", () => {
     cy.get("#header > div > div.skip-links > div > a")
       .should("have.class", "skip-link skip-account")
       .click();
-
     cy.get("#header-account > div > ul > li:nth-child(5) > a")
       .should("contain", "Register")
       .click();
-
     email = `invalid${genMeEmailcode()}@email.com`;
-
     cy.get("#firstname")
       .should("have.id", "firstname")
       .type("1234")
@@ -264,7 +241,6 @@ describe("Test register in new customer account functionality ", () => {
     cy.get("#form-validate > div.buttons-set > button")
       .should("have.class", "button")
       .click();
-
     cy.get("#header > div > div.skip-links > div > a")
       .should("have.class", "skip-link skip-account")
       .click();
@@ -276,13 +252,10 @@ describe("Test register in new customer account functionality ", () => {
     cy.get("#header > div > div.skip-links > div > a")
       .should("have.class", "skip-link skip-account")
       .click();
-
     cy.get("#header-account > div > ul > li:nth-child(5) > a")
       .should("contain", "Register")
       .click();
-
     email = `invalid${genMeEmailcode()}`;
-
     cy.get("#firstname")
       .should("have.id", "firstname")
       .type(" ")
@@ -292,7 +265,6 @@ describe("Test register in new customer account functionality ", () => {
       .should("have.id", "lastname")
       .type(" ")
       .should("have.value", " ");
-
     cy.get("#email_address")
       .should("have.id", "email_address")
       .type(" ")
@@ -302,11 +274,9 @@ describe("Test register in new customer account functionality ", () => {
       .type(password);
     cy.get("#confirmation").should("have.id", "confirmation").type(" ");
     cy.get("#is_subscribed").check();
-
     cy.get("#form-validate > div.buttons-set > button")
       .should("have.class", "button")
       .click();
-
     cy.get("#header > div > div.skip-links > div > a")
       .should("have.class", "skip-link skip-account")
       .click();
@@ -318,17 +288,13 @@ describe("Test register in new customer account functionality ", () => {
     cy.get("#header > div > div.skip-links > div > a")
       .should("have.class", "skip-link skip-account")
       .click();
-
     cy.get("#header-account > div > ul > li:nth-child(5) > a")
       .should("contain", "Register")
       .click();
-
     email = `invalid${genMeEmailcode()}`;
-
     cy.get("#firstname").should("have.id", "firstname").type("TestName ");
     cy.get("#middlename").should("have.id", "middlename").type("R");
     cy.get("#lastname").should("have.id", "lastname").type("SecondTestaName");
-
     cy.get("#email_address").should("have.id", "email_address").type(email);
     cy.get("#password")
       .should("have.class", "input-text required-entry validate-password")

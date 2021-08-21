@@ -1,6 +1,12 @@
-let usename = "standard_user";
-let password = "secret_sauce";
-
+const randomNumber1 = Math.floor(Math.random() * 5 + 1 / 6);
+const randomNumber2 = Math.floor(Math.random() * 2 + 6 / 2);
+const randomNumber3 = Math.floor(Math.random() * 7 + 2 / 9);
+const randomNumber4 = Math.floor(Math.random() * 3 + 4 / 4);
+let password = `seret${randomNumber2}_sauce${randomNumber1}`;
+import RanGen from "../support/RandomGenerator.spec";
+const ranGen = new RanGen();
+let email = "";
+let username = `stan${randomNumber1}da${randomNumber4}rd_${randomNumber3}user${randomNumber2}`;
 describe("Write 3 own cypress test", () => {
   beforeEach(() => {
     cy.visit("https://petstore.octoperf.com/actions/Catalog.action");
@@ -38,9 +44,48 @@ describe("Write 3 own cypress test", () => {
     cy.get("tbody > :nth-child(2) > :nth-child(1) > a").click();
     cy.get(".Button").click();
     cy.get('[href="/actions/Order.action?newOrderForm="]').click();
-    cy.go("back");
-    cy.get(":nth-child(8) > .Button").click();
-    cy.get("#BackLink > a").click();
+    cy.get("a").contains("Register Now!").click();
+    cy.get("input[name=username]").click().clear().type(username);
+    cy.get("input[name=password]").click().clear().type(password);
+
+    cy.get("input[name=repeatedPassword]").click().clear().type(password);
+    cy.get("input[name=account\\.firstName]")
+      .click()
+      .clear()
+      .type("NewUserName");
+    cy.get("input[name=account\\.lastName]")
+      .click()
+      .clear()
+      .type("NewUserName");
+    email = ranGen.genMeEmailcode();
+    cy.get("input[name=account\\.email]").click().clear().type(email);
+    cy.get("input[name=account\\.phone]").click().clear().type("0224466558");
+    cy.get("input[name=account\\.address1]")
+      .click()
+      .clear()
+      .type("Address nr1");
+    cy.get("input[name=account\\.address2]")
+      .click()
+      .clear()
+      .type("Address nr2");
+    cy.get("input[name=account\\.city").click().clear().type("Desperado");
+    cy.get("input[name=account\\.state").click().clear().type("Anada");
+    cy.get("input[name=account\\.zip").click().clear().type("342116");
+    cy.get("input[name=account\\.country")
+      .click()
+      .clear()
+      .type("Beniioni")
+      .should("have.value", "Beniioni");
+
+    cy.get("input[name=account\\.listOption").check().should("be.checked");
+    cy.get("input[name=account\\.bannerOption").check().should("be.checked");
+    cy.get("input[name=newAccount").click();
+    cy.get("#MenuContent > a:nth-child(1) > img").click();
+    cy.get("a").contains("Proceed to Checkout").click();
+    cy.get("input[name=newOrder").click();
+    cy.get("a").contains("Confirm").click();
+
+    cy.get("a").contains("Return to Main Menu").click();
     cy.url().should(
       "eq",
       "https://petstore.octoperf.com/actions/Catalog.action"

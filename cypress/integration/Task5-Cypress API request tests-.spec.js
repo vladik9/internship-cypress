@@ -6,14 +6,14 @@ describe("Test REST api", () => {
       "GET",
       "https://petstore.swagger.io/v2/pet/findByStatus?status=sold"
     ).then((response) => {
-      const name = response.body[0].name;
+      const name = response.body[1].name;
       expect(response.status).to.eq(200);
       alert(`The name was: ${name}`);
       console.log(response.body);
     });
   });
 
-  it("Test a POST request", () => {
+  it("Test a POST request Pet Store", () => {
     const jsBody = {
       id: 5,
       petId: 2,
@@ -22,7 +22,6 @@ describe("Test REST api", () => {
       status: "placed",
       complete: true,
     };
-
     cy.request(
       "POST",
       "https://petstore.swagger.io/v2/store/order",
@@ -40,6 +39,31 @@ describe("Test REST api", () => {
     const url = `https://petstore.swagger.io/v2/user/login?username=${userName}&password=${userPassword}`;
     cy.request("GET", url).then((response) => {
       if (response.status === 200) alert("The user has successfully login!");
+      expect(response.status).to.eq(200);
+      console.log(response.body);
+    });
+  });
+
+  it("Test a POST request Create a WhiteList", () => {
+    const jsBody = [
+      {
+        id: 0,
+        username: "NewUserForTest",
+        firstName: "NameC",
+        lastName: "NameV",
+        email: "vv.add.email@email.com",
+        password: "somePassword",
+        phone: "0231465498",
+        userStatus: 1,
+      },
+    ];
+    cy.request(
+      "POST",
+      " https://petstore.swagger.io/v2/user/createWithList",
+      jsBody
+    ).then((response) => {
+      if (response.body.message === "ok")
+        alert("The new user is added successfully!");
       expect(response.status).to.eq(200);
       console.log(response.body);
     });
