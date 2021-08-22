@@ -23,14 +23,12 @@ describe("Test register in new customer account functionality ", () => {
     cy.get("#header > div > div.skip-links > div > a")
       .should("have.class", "skip-link skip-account")
       .click();
-
     cy.get("#header-account > div > ul > li:nth-child(5) > a")
       .should("contain", "Register")
       .click();
     cy.get("#firstname").should("have.id", "firstname").type("Canome");
     cy.get("#middlename").should("have.id", "middlename").type("R");
     cy.get("#lastname").should("have.id", "lastname").type("Eduard");
-
     cy.get("#email_address").should("have.id", "email_address").type(email);
     cy.get("#password")
       .should("have.class", "input-text required-entry validate-password")
@@ -70,6 +68,7 @@ describe("Test register in new customer account functionality ", () => {
       .click();
     cy.get("#header-account > div > ul > li.last > a").click();
   });
+
   it("Test register valid Email", () => {
     genMeEmailcode();
     email = `${genMeEmailcode()}@email.com`;
@@ -108,12 +107,10 @@ describe("Test register in new customer account functionality ", () => {
     cy.get("#header-account > div > ul > li:nth-child(5) > a")
       .should("contain", "Register")
       .click();
-
     email = `invalid${genMeEmailcode()}`;
     cy.get("#firstname").should("have.id", "firstname").type("Canome");
     cy.get("#middlename").should("have.id", "middlename").type("R");
     cy.get("#lastname").should("have.id", "lastname").type("Eduard");
-
     cy.get("#email_address").should("have.id", "email_address").type(email);
     cy.get("#password")
       .should("have.class", "input-text required-entry validate-password")
@@ -129,6 +126,7 @@ describe("Test register in new customer account functionality ", () => {
       .click();
     cy.get("#header-account > div > ul > li.last > a").click();
   });
+
   it("Test register invalid Email without dot in the domain name", () => {
     genMeEmailcode();
     cy.get("#header > div > div.skip-links > div > a")
@@ -156,6 +154,7 @@ describe("Test register in new customer account functionality ", () => {
       .click();
     cy.get("#header-account > div > ul > li.last > a").click();
   });
+
   it("Test register invalid Email without the domain name location", () => {
     genMeEmailcode();
     cy.get("#header > div > div.skip-links > div > a")
@@ -193,7 +192,6 @@ describe("Test register in new customer account functionality ", () => {
       .should("contain", "Register")
       .click();
     email = `@email.com`;
-
     cy.get("#firstname").should("have.id", "firstname").type("Canome");
     cy.get("#middlename").should("have.id", "middlename").type("R");
     cy.get("#lastname").should("have.id", "lastname").type("Eduard");
@@ -314,6 +312,7 @@ describe("Test register in new customer account functionality ", () => {
       .click();
     cy.get("#header-account > div > ul > li.last > a").click();
   });
+
   it("Login whit wrong password", () => {
     cy.get("#header > div > div.skip-links > div > a")
       .should("have.class", "skip-link skip-account")
@@ -332,6 +331,7 @@ describe("Test register in new customer account functionality ", () => {
       .click();
     cy.get("#header-account > div > ul > li.last > a").click();
   });
+
   it("Login whit wrong EMAIL whithouth @ sign", () => {
     cy.get("#header > div > div.skip-links > div > a")
       .should("have.class", "skip-link skip-account")
@@ -368,7 +368,6 @@ describe("Test register in new customer account functionality ", () => {
       .should("have.class", "input-text required-entry validate-password")
       .type("amParolaCea1MaiTare");
     cy.get("#send2").should("contain", "Login").click();
-
     cy.get("#header > div > div.skip-links > div > a")
       .should("have.class", "skip-link skip-account")
       .click();
@@ -388,7 +387,6 @@ describe("Test register in new customer account functionality ", () => {
       .type(" ")
       .should("be.empty");
     cy.get("#send2").should("contain", "Login").click();
-
     cy.get("#header > div > div.skip-links > div > a")
       .should("have.class", "skip-link skip-account")
       .click();
@@ -410,7 +408,6 @@ describe("Test register in new customer account functionality ", () => {
       .should("have.class", "input-text required-entry validate-password")
       .type("amParolaCea1MaiTare");
     cy.get("#send2").should("contain", "Login").click();
-
     cy.get("#header > div > div.skip-links > div > a")
       .should("have.class", "skip-link skip-account")
       .click();

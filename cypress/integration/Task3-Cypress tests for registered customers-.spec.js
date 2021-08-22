@@ -81,7 +81,6 @@ describe("Test funtionality for registred user", () => {
       .clear()
       .type("Andrew")
       .should("have.value", "Andrew");
-
     cy.get("#telephone")
       .should("have.class", "input-text")
       .clear()
@@ -130,7 +129,6 @@ describe("Test funtionality for registred user", () => {
       .type(password)
       .should("have.value", password);
     cy.get("#send2").should("contain", "Login").click();
-
     cy.get(".nav-1 > .level0").should("have.class", "level0").click();
     cy.get("#search").click().type("IPHONE").clear().type("IPHONE 6");
     cy.get("#search_autocomplete > ul").first().click();
@@ -144,7 +142,6 @@ describe("Test funtionality for registred user", () => {
         "have.text",
         "IPhone has been added to your wishlist. Click here to continue shopping."
       );
-
     cy.get(".nav-1 > .level0").should("have.class", "level0").click();
     cy.get("#search").click().clear().type("LG LCD");
     cy.get("#search_autocomplete > ul").first().click();
@@ -175,7 +172,6 @@ describe("Test funtionality for registred user", () => {
       .type(password)
       .should("have.value", password);
     cy.get("#send2").should("contain", "Login").click();
-
     cy.get(".nav-1 > .level0").should("have.class", "level0").click();
     cy.get("#search").clear().type("Samsung Galaxy");
     cy.get("#search_autocomplete > ul").first().click();
@@ -226,7 +222,6 @@ describe("Test funtionality for registred user", () => {
     cy.get("#p_method_checkmo").check().should("be.checked");
     cy.get("#payment-buttons-container > .button").click();
     cy.get("#review-buttons-container > .button").click();
-
     cy.get(".large").click();
     cy.get("#header > div > div.skip-links > div > a")
       .should("have.class", "skip-link skip-account")
@@ -238,7 +233,6 @@ describe("Test funtionality for registred user", () => {
     cy.get("h3")
       .contains("Default Shipping Address")
       .should("have.text", "Default Shipping Address");
-
     cy.get("#header > div > div.skip-links > div > a")
       .should("have.class", "skip-link skip-account")
       .click();
@@ -272,7 +266,6 @@ describe("Test funtionality for registred user", () => {
     cy.get("#header > div > div.skip-links > div > a")
       .should("have.class", "skip-link skip-account")
       .click();
-
     cy.get("#header-account > div > ul > li.last > a").click();
   });
 });

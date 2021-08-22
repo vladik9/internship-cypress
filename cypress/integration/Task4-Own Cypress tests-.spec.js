@@ -47,7 +47,6 @@ describe("Write 3 own cypress test", () => {
     cy.get("a").contains("Register Now!").click();
     cy.get("input[name=username]").click().clear().type(username);
     cy.get("input[name=password]").click().clear().type(password);
-
     cy.get("input[name=repeatedPassword]").click().clear().type(password);
     cy.get("input[name=account\\.firstName]")
       .click()
@@ -76,7 +75,6 @@ describe("Write 3 own cypress test", () => {
       .clear()
       .type("Beniioni")
       .should("have.value", "Beniioni");
-
     cy.get("input[name=account\\.listOption").check().should("be.checked");
     cy.get("input[name=account\\.bannerOption").check().should("be.checked");
     cy.get("input[name=newAccount").click();
@@ -84,7 +82,6 @@ describe("Write 3 own cypress test", () => {
     cy.get("a").contains("Proceed to Checkout").click();
     cy.get("input[name=newOrder").click();
     cy.get("a").contains("Confirm").click();
-
     cy.get("a").contains("Return to Main Menu").click();
     cy.url().should(
       "eq",
@@ -99,7 +96,6 @@ describe("Write 3 own cypress test", () => {
       "eq",
       "https://petstore.octoperf.com/actions/Catalog.action"
     );
-
     cy.reload(true);
     cy.get('[href="/actions/Account.action?signonForm="]').click();
     cy.get("#LogoContent > a > img").click();
@@ -110,7 +106,6 @@ describe("Write 3 own cypress test", () => {
     cy.get(
       '#QuickLinks > [href="/actions/Catalog.action?viewCategory=&categoryId=FISH"] > img'
     ).click();
-
     cy.get("[name=keyword]").type("FI-SW-01").should("have.value", "FI-SW-01");
     cy.get('[name="searchProducts"]').click();
     cy.get("#LogoContent > a > img").click();

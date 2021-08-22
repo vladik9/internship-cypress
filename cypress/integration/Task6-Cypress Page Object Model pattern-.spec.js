@@ -14,7 +14,6 @@ describe("POM model in Cypress", () => {
 
   it("Register POM model", () => {
     email = ranGen.genMeEmailcode();
-
     register.getAccountButton().click();
     register.getRegisterButton().click();
     register.getFirstName().type("Canome");

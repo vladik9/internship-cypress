@@ -16,11 +16,8 @@ describe("Test funtionality for unregistred user", () => {
   it("Test add an item to shoping cart", () => {
     cy.get(".nav-1 > .level0").should("have.class", "level0").click();
     cy.get("#search").click().type("IPHONE").clear().type("IPHONE 6");
-
     cy.get("#search_autocomplete > ul").first().click();
-
     cy.get(":nth-child(2) > .product-info > .actions > .button").click();
-
     cy.get("li > span").should(
       "have.text",
       "IPhone was added to your shopping cart."
@@ -44,7 +41,6 @@ describe("Test funtionality for unregistred user", () => {
       "have.text",
       "IPhone was added to your shopping cart."
     );
-
     cy.get(".method-checkout-cart-methods-onepage-bottom").click();
     cy.get("#onepage-guest-register-button").should("be.visible").click();
     cy.get("#billing\\:firstname")
@@ -77,7 +73,6 @@ describe("Test funtionality for unregistred user", () => {
       .clear()
       .type("2277745")
       .should("have.value", "2277745");
-
     cy.get("#billing\\:telephone")
       .clear()
       .type("252-379-7411")
@@ -92,7 +87,6 @@ describe("Test funtionality for unregistred user", () => {
     cy.get("#payment-buttons-container > .button").click();
     cy.get("#review-buttons-container > .button").click();
     cy.get(".sub-title").should("have.text", "Thank you for your purchase!");
-
     cy.get(".col-main > :nth-child(3)").each(($el, index, $list) => {
       const data = $el[0].childNodes[0].data;
       let array = [];

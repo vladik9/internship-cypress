@@ -24,8 +24,7 @@ describe("Test REST api", () => {
     };
     cy.request(
       "POST",
-      "https://petstore.swagger.io/v2/store/order",
-      jsBody
+      "https://petstore.swagger.io/v2/store/order",jsBody
     ).then((response) => {
       if (response.body.status === "placed") alert("The order is placed!");
       expect(response.status).to.eq(200);
