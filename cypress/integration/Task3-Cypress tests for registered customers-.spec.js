@@ -148,8 +148,12 @@ describe("Test funtionality for registred user", () => {
     cy.get("#product-collection-image-4").click();
     cy.get("a").contains("Add to Wishlist").click();
     cy.get("h1").should("have.text", "My Wishlist");
+    cy.get("a").contains("IPhone").should("have.text", "IPhone");
+    cy.get("a").contains("LG LCD").should("have.text", "LG LCD");
+
     cy.get("a").contains("Remove item").last().click();
     cy.get("h1").should("have.text", "My Wishlist");
+    cy.get("a").contains("IPhone").should("have.text", "IPhone");
     cy.get("#header > div > div.skip-links > div > a")
       .should("have.class", "skip-link skip-account")
       .click();
